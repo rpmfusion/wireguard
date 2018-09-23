@@ -44,7 +44,7 @@ sh apply.sh
 popd
 
 pushd src/tools
-%make_build
+%make_build V=1
 popd
 
 
