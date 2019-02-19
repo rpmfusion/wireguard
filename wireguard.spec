@@ -1,6 +1,6 @@
 Name:           wireguard
 Summary:        Fast, modern, secure VPN tunnel
-Version:        0.0.20181218
+Version:        0.0.20190123
 Release:        1%{?dist}
 License:        GPLv2
 
@@ -82,6 +82,9 @@ popd
 
 
 %changelog
+* Tue Feb 19 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190123-1
+- Release 0.0.20190123
+
 * Tue Dec 18 2018 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20181218-1
 - Release 0.0.20181218
 
