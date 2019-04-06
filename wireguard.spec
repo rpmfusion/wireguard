@@ -74,7 +74,7 @@ sed -i '1s@/usr/bin/env bash@/bin/bash@' contrib/examples/ncat-client-server/cli
 
 
 %changelog
-* Sat Apr 06 13:29:56 CET 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190406-1
+* Sat Apr 06 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190406-1
 - Release 0.0.20190406
 
 * Thu Mar 07 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190227-2
