@@ -1,7 +1,7 @@
 Name:           wireguard
 Summary:        Fast, modern, secure VPN tunnel
-Version:        0.0.20190227
-Release:        3%{?dist}
+Version:        0.0.20190406
+Release:        1%{?dist}
 License:        GPLv2
 
 URL:            https://www.wireguard.com/
@@ -74,6 +74,9 @@ sed -i '1s@/usr/bin/env bash@/bin/bash@' contrib/examples/ncat-client-server/cli
 
 
 %changelog
+* Sat Apr 06 13:29:56 CET 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190406-1
+- Release 0.0.20190406
+
 * Thu Mar 07 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190227-3
 - Unifying spec with Lubomir Rintel's one
 - Rebuilt for akmods-ostree-post scriptlet
