@@ -1,7 +1,7 @@
 Name:           wireguard
 Summary:        Fast, modern, secure VPN tunnel
 Version:        0.0.20190702
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPLv2
 
 URL:            https://www.wireguard.com/
@@ -32,7 +32,8 @@ alike, fit for many different circumstances. It runs over UDP.
 find contrib/ -type f -name ".gitignore" -exec rm "{}" \;
 # Do not use /usr/bin/env
 sed -i '1s@/usr/bin/env bash@/bin/bash@' contrib/examples/ncat-client-server/client-quick.sh
-
+# Make the unit file depend on systemd-resolved.service
+sed -i 's@network-online.target nss-lookup.target@network-online.target nss-lookup.target systemd-resolved.service@' src/tools/systemd/wg-quick@.service
 
 %build
 %set_build_flags
@@ -74,7 +75,10 @@ sed -i '1s@/usr/bin/env bash@/bin/bash@' contrib/examples/ncat-client-server/cli
 
 
 %changelog
-* Fri Jul 05 19:32:04 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190702-1
+* Tue Aug 06 23:01:56 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190702-2
+- Patch unit file to depend on systemd-resolved.service (#5325)
+
+* Fri Jul 05 19:32:04 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190702-2
 - Release 0.0.20190702
 
 * Fri May 31 20:14:05 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190531-1
