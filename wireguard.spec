@@ -90,9 +90,12 @@ sed -i 's@network-online.target nss-lookup.target@network-online.target nss-look
 * Sat Apr 06 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190406-1
 - Release 0.0.20190406
 
-* Thu Mar 07 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190227-2
+* Thu Mar 07 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190227-3
 - Unifying spec with Lubomir Rintel's one
 - Rebuilt for akmods-ostree-post scriptlet
+
+* Tue Mar 05 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 0.0.20190227-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
 * Thu Feb 28 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190227-1
 - Release 0.0.20190227
