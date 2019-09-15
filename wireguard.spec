@@ -1,7 +1,7 @@
 Name:           wireguard
 Summary:        Fast, modern, secure VPN tunnel
-Version:        0.0.20190702
-Release:        2%{?dist}
+Version:        0.0.20190913
+Release:        1%{?dist}
 License:        GPLv2
 
 URL:            https://www.wireguard.com/
@@ -75,16 +75,19 @@ sed -i 's@network-online.target nss-lookup.target@network-online.target nss-look
 
 
 %changelog
-* Tue Aug 06 23:01:56 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190702-2
+* Sun Sep 15 2019 Leigh Scott <leigh123linux@googlemail.com> - 0.0.20190913-1
+- Release 0.0.20190913
+
+* Tue Aug 06 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190702-2
 - Patch unit file to depend on systemd-resolved.service (#5325)
 
-* Fri Jul 05 19:32:04 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190702-2
+* Fri Jul 05 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190702-2
 - Release 0.0.20190702
 
-* Fri May 31 20:14:05 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190531-1
+* Fri May 31 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190531-1
 - Release 0.0.20190531
 
-* Sat Apr 06 13:29:56 CET 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190406-1
+* Sat Apr 06 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190406-1
 - Release 0.0.20190406
 
 * Thu Mar 07 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190227-3
