@@ -1,6 +1,6 @@
 Name:           wireguard
 Summary:        Fast, modern, secure VPN tunnel
-Version:        0.0.20190913
+Version:        0.0.20191012
 Release:        1%{?dist}
 License:        GPLv2
 
@@ -32,7 +32,8 @@ alike, fit for many different circumstances. It runs over UDP.
 find contrib/ -type f -name ".gitignore" -exec rm "{}" \;
 # Do not use /usr/bin/env
 sed -i '1s@/usr/bin/env bash@/bin/bash@' contrib/examples/ncat-client-server/client-quick.sh
-
+# Make the unit file depend on systemd-resolved.service
+sed -i 's@network-online.target nss-lookup.target@network-online.target nss-lookup.target systemd-resolved.service@' src/tools/systemd/wg-quick@.service
 
 %build
 %set_build_flags
@@ -74,10 +75,16 @@ sed -i '1s@/usr/bin/env bash@/bin/bash@' contrib/examples/ncat-client-server/cli
 
 
 %changelog
+* Sun Oct 13 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20191012-1
+- Release 0.0.20191012
+
 * Sun Sep 15 2019 Leigh Scott <leigh123linux@googlemail.com> - 0.0.20190913-1
 - Release 0.0.20190913
 
-* Fri Jul 05 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190702-1
+* Tue Aug 06 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190702-2
+- Patch unit file to depend on systemd-resolved.service (#5325)
+
+* Fri Jul 05 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190702-2
 - Release 0.0.20190702
 
 * Fri May 31 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190531-1
@@ -86,9 +93,12 @@ sed -i '1s@/usr/bin/env bash@/bin/bash@' contrib/examples/ncat-client-server/cli
 * Sat Apr 06 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190406-1
 - Release 0.0.20190406
 
-* Thu Mar 07 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190227-2
+* Thu Mar 07 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190227-3
 - Unifying spec with Lubomir Rintel's one
 - Rebuilt for akmods-ostree-post scriptlet
+
+* Tue Mar 05 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 0.0.20190227-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
 * Thu Feb 28 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20190227-1
 - Release 0.0.20190227
@@ -110,6 +120,9 @@ sed -i '1s@/usr/bin/env bash@/bin/bash@' contrib/examples/ncat-client-server/cli
 
 * Sun Oct 07 2018 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20181007-1
 - Release 0.0.20181007
+
+* Sat Oct 06 2018 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20181006-1
+- Release 0.0.20181006
 
 * Tue Sep 25 2018 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20180925-1
 - Release 0.0.20180925
