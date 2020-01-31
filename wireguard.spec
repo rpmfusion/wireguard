@@ -1,7 +1,7 @@
 Name:           wireguard
 Summary:        Fast, modern, secure VPN tunnel
-Version:        0.0.20191205
-Release:        1%{?dist}
+Version:        0.0.20191219
+Release:        2%{?dist}
 License:        GPLv2
 
 URL:            https://www.wireguard.com/
@@ -37,6 +37,11 @@ sed -i 's@network-online.target nss-lookup.target@network-online.target nss-look
 
 %build
 %set_build_flags
+## Start DNS Hatchet	
+pushd contrib/examples/dns-hatchet	
+./apply.sh	
+popd	
+## End DNS Hatchet
 %make_build V=1 -C src/tools
 
 
@@ -75,6 +80,12 @@ sed -i 's@network-online.target nss-lookup.target@network-online.target nss-look
 
 
 %changelog
+* Fri Jan 31 2020 Leigh Scott <leigh123linux@googlemail.com> - 0.0.20191219-2
+- Fix DNS conf issue
+
+* Fri Dec 20 2019 Leigh Scott <leigh123linux@googlemail.com> - 0.0.20191219-1
+- Release 0.0.20191219
+
 * Thu Dec 05 2019 Robert-André Mauchin <zebob.m@gmail.com> - 0.0.20191205-1
 - Release 0.0.20191205
 
