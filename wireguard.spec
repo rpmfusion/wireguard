@@ -1,85 +1,42 @@
 Name:           wireguard
 Summary:        Fast, modern, secure VPN tunnel
-Version:        0.0.20191219
-Release:        2%{?dist}
+Version:        1.0.20201221
+Release:        1%{?dist}
 License:        GPLv2
 
 URL:            https://www.wireguard.com/
-Source0:        https://git.zx2c4.com/WireGuard/snapshot/WireGuard-%{version}.tar.xz
-
-%{?systemd_requires}
-BuildRequires:  systemd
-BuildRequires:  gcc
-BuildRequires:  make
-BuildRequires:  pkgconfig(libmnl)
+Source0:        https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-%{version}.tar.xz
+BuildArch:      noarch
 
 Provides:       %{name}-kmod-common = %{version}
 Requires:       %{name}-kmod >= %{version}
 
+# Don't enforce a version for now
+Requires: wireguard-tools
+
 %description
-WireGuard is a novel VPN that runs inside the Linux Kernel and utilizes
-state-of-the-art cryptography. It aims to be faster, simpler, leaner,
-and more useful than IPSec, while avoiding the massive headache. It intends
-to be considerably more performant than OpenVPN. WireGuard is designed as a
-general purpose VPN for running on embedded interfaces and super computers
-alike, fit for many different circumstances. It runs over UDP.
+Kmod-common part for wireguard
 
 
 %prep
-%autosetup -n WireGuard-%{version}
-
-# Remove .gitignore files in examples
-find contrib/ -type f -name ".gitignore" -exec rm "{}" \;
-# Do not use /usr/bin/env
-sed -i '1s@/usr/bin/env bash@/bin/bash@' contrib/examples/ncat-client-server/client-quick.sh
-# Make the unit file depend on systemd-resolved.service
-sed -i 's@network-online.target nss-lookup.target@network-online.target nss-lookup.target systemd-resolved.service@' src/tools/systemd/wg-quick@.service
+%autosetup -n wireguard-linux-compat-%{version}
 
 %build
-%set_build_flags
-## Start DNS Hatchet	
-pushd contrib/examples/dns-hatchet	
-./apply.sh	
-popd	
-## End DNS Hatchet
-%make_build V=1 -C src/tools
+# Nothing to build
 
 
 %install
-%make_install -C src/tools \
-        WITH_BASHCOMPLETION=yes \
-        WITH_WGQUICK=yes \
-        WITH_SYSTEMDUNITS=yes
-
-
-%post
-%systemd_post wg-quick@.service
-
-
-%preun
-%systemd_preun wg-quick@.service
-
-
-%postun
-%systemd_postun_with_restart wg-quick@.service
+# Nothing to install
 
 
 %files
-%doc contrib/examples README.md
+%doc README.md
 %license COPYING
-%{_bindir}/wg
-%{_bindir}/wg-quick
-%{_unitdir}/wg-quick@.service
-%{_sysconfdir}/wireguard
-%{_mandir}/man8/wg.8*
-%{_mandir}/man8/wg-quick.8*
-%dir %{_datadir}/bash-completion
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/wg
-%{_datadir}/bash-completion/completions/wg-quick
-
 
 %changelog
+* Mon Dec 21 2020 Nicolas Chauvet <kwizart@gmail.com> - 1.0.20201221-1
+- Update to 1.0.20201221
+
 * Fri Jan 31 2020 Leigh Scott <leigh123linux@googlemail.com> - 0.0.20191219-2
 - Fix DNS conf issue
 
