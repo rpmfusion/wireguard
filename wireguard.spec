@@ -1,6 +1,6 @@
 Name:           wireguard
 Summary:        Fast, modern, secure VPN tunnel
-Version:        1.0.20210606
+Version:        1.0.20220627
 Release:        1%{?dist}
 License:        GPLv2
 
@@ -34,6 +34,9 @@ Kmod-common part for wireguard
 %license COPYING
 
 %changelog
+* Wed Nov 16 2022 Nicolas Chauvet <kwizart@gmail.com> - 1.0.20220627-1
+- Update to 1.0.20220627
+
 * Tue Jun 08 2021 Nicolas Chauvet <kwizart@gmail.com> - 1.0.20210606-1
 - Update to 1.0.20210606
 
